@@ -20,6 +20,7 @@
 See [the command reference](https://github.com/vim-volt/volt/blob/master/CMDREF.md) for more details.
 
 
+* [Changes to upstream](#changes-to-upstream)
 * [What is Volt](#what-is-volt)
 * [Install](#install)
 * [Self upgrade](#self-upgrade)
@@ -39,6 +40,17 @@ See [the command reference](https://github.com/vim-volt/volt/blob/master/CMDREF.
 * [Contribution](#tada-contribution)
 
 
+## Changes to upstream
+
+This is not the upstream source. It's a fork to fix some bugs that are not
+incorporated into upstream yet. If you are searching for the non-patched
+upstream see http://github.com/vim-volt/volt.
+
+The following Pull Requests are integrated in this fork:
+
+ - [Remove erroneous call to `RemoveAllReposPath`](https://github.com/vim-volt/volt/pull/281)
+ - [Support go modules](https://github.com/vim-volt/volt/pull/283)
+ - [Sort entries in lockJSLN](https://github.com/vim-volt/volt/pull/284)
 
 ## What is Volt
 
