@@ -53,6 +53,8 @@ The following Pull Requests are integrated in this fork:
  - [End plugconf files with \n](https://github.com/vim-volt/volt/pull/276)
  - [Introduce new subcmd `edit`](https://github.com/vim-volt/volt/pull/278)
 
+Prebuild binaries are available in the [Release section](https://github.com/hupfdule/volt/releases)
+
 ## What is Volt
 
 * Multi-platform CLI tool managing Vim plugin life
