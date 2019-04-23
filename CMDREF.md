@@ -15,6 +15,48 @@ Usage
   volt COMMAND ARGS
 
 Command
+  add [-[n]d|--[no]download] [--[no]enable] [--[no]edit] <repository>[@<tag-or-branch>] [<repository>[@<tag-or-branch> ...]
+    Add a repository to the list of managed plugins.
+
+  get [-a|--all]
+    Download the repositories that are managed and enabled in the currently selected or all profiles.
+
+  rm [-[n]r|--[no]repo] [-[n]p|--[no]plugconf] <repository> [<repository2> ...]
+    Remove repository from the list of managed plugins.
+
+  list [-a|--all]
+    List plugins enabled in current profile or all managed plugins.
+
+  enable <repository> [<repository> ...]
+    Enable the given plugin[s] for the current profile.
+    This is a shortcut of `volt profile add -current <repository> [<repository>]`
+
+  disable <repository> [<repository> ...]
+    Disable the given plugin[s] for the current profile.
+    This is a shortcut of `volt profile rm -current <repository> [<repository>]`
+
+  edit [-e|--editor <editor>] <repository> [<repository2> ...]
+    Open the plugconf file(s) of one or more plugins for editing.
+
+  upgrade [-[n]f|--[no]force] [<repository>[@<tag-or-branch>] ..]
+    Upgrade the given or all plugins to the newest version.
+
+  profile ...
+    ...
+
+  self-upgrade [-check]
+    Upgrade to the latest volt binary, or if -check was given, it only checks whether a newer version is available.
+
+  help
+    Show the help of volt.
+
+  version
+    Show volt version.
+
+
+
+---- Original Volt commands
+
   get [-l] [-u] [{repository} ...]
     Install or upgrade given {repository} list, or add local {repository} list as plugins
 
