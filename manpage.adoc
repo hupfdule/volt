@@ -24,31 +24,37 @@ SYNOPSIS
 COMMANDS
 --------
 
-*add* [-[n]d|--[no]download] [-[n]e|--[no]enable] [-[n]c|--[no]config] <package-url>[@<tag-or-banch>] [<package-url>[@<tag-or-banch> ...]::
-
+*add* [-[n]d|--[no]download] [-[n]e|--[no]enable] [-[n]c|--[no]config] <__package-url__>[@<__tag-or-branch__>] [<__package-url__>[@<__tag-or-branch__> ...]::
   Add the given repositories to the list of managed plugins.
-
-  If the option `--download` is given (which is the default) the plugin
++
+If the option `--download` is given (which is the default) the plugin
 will be downloaded into the vim package directory. This is a shortcut for
 calling `amp get` afterwards.
-
-  If the option `--enable` is given (which is the default) the plugin will
++
+If the option `--enable` is given (which is the default) the plugin will
 be enabled for the current profile. This is a shortcut for calling `amp
 enable` afterwards.
-
-  If the option `--config` is given (which is the default) an editor will
++
+If the option `--config` is given (which is the default) an editor will
 be opened to edit the plugins configuration. This is a shortcut for calling
 `amp edit` afterwards.
 
 *get* [-a|--all]::
-
   Download the repositories that are managed and enabled in the currently
-select profile.
+  select profile.
++
+If the option `--all` is given, then all managed repositories will be
+downloaded, even if they are not enabled in the current profile.
 
-  If the option `--all` is given, then all managed repositories will be
-downloaded, even if they are not enabled in the current profile. 
+*rm* [-[n]r|--[no]repo] [-[n]p|--[no]plugconf] <__package-url__> [<__package-url__> ...]::
 
-remove::
+  Remove the given plugins from the list of managed plugins.
++ 
+If the option `--repo` is given, the repository of
+that plugin will be removed from the file system.
++
+If the option `-plugconf` is given, the configuration file(s) for the
+removed repositories are also removed.
 
 enable::
 
