@@ -39,6 +39,20 @@ See [the command reference](https://github.com/vim-volt/volt/blob/master/CMDREF.
 * [Contribution](#tada-contribution)
 
 
+## Changes to upstream
+
+This is not the upstream source. It's a fork to fix some bugs that are not
+incorporated into upstream yet. If you are searching for the non-patched
+upstream see http://github.com/vim-volt/volt.
+
+The following Pull Requests are integrated in this fork:
+
+ - [Update plugconf examples function names](https://github.com/vim-volt/volt/pull/271)
+ - [Place plugconf comments outside of functions again](https://github.com/vim-volt/volt/pull/275)
+ - [End plugconf files with \n](https://github.com/vim-volt/volt/pull/276)
+ - [Introduce new subcmd `edit`](https://github.com/vim-volt/volt/pull/278)
+
+Prebuild binaries are available in the [Release section](https://github.com/vim-volt/volt/releases)
 
 ## What is Volt
 

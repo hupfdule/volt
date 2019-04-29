@@ -15,7 +15,6 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-
 	"github.com/vim-volt/volt/httputil"
 	"github.com/vim-volt/volt/logger"
 )
