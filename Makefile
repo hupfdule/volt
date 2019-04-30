@@ -6,6 +6,13 @@ RELEASE_LDFLAGS := -s -w -extldflags '-static'
 RELEASE_OS := linux windows darwin
 RELEASE_ARCH := amd64 386
 
+DEFAULT_ARCHS := linux/amd64 linux/386 windows/amd64 windows/386 darwin/amd64 darwin/386 linux/arm linux/arm64
+ALL_ARCHS := $(shell go tool dist list)
+os_and_arch = $(subst /, ,$@)
+os = $(word 1, $(os_and_arch))
+arch = $(word 2, $(os_and_arch))
+exe = $(DIST_DIR)/$(NAME)-$(VERSION)-$(os)-$(arch)
+
 DIST_DIR := dist
 BIN_DIR := bin
 
@@ -28,21 +35,17 @@ test:
 	make
 	go test -v -race -parallel 3 ./...
 
-# Make static-linked binaries and tarballs
-release: $(BIN_DIR)/$(NAME)
-	rm -fr $(DIST_DIR)
-	@for os in $(RELEASE_OS); do \
-		for arch in $(RELEASE_ARCH); do \
-			exe=$(DIST_DIR)/$(NAME)-$(VERSION)-$$os-$$arch; \
-			if [ $$os = windows ]; then \
-				exe=$$exe.exe; \
-			fi; \
-			echo "Creating $$exe ... (os=$$os, arch=$$arch)"; \
-			GOOS=$$os GOARCH=$$arch go build -tags netgo -installsuffix netgo -ldflags "$(RELEASE_LDFLAGS)" -o $$exe; \
-		done; \
-	done
+release: $(DEFAULT_ARCHS)
+
+$(DEFAULT_ARCHS):
+	@exe=$(exe); \
+	if [ $(os) = windows ]; then \
+	  exe=$$exe.exe; \
+	fi; \
+	echo "Creating "$$exe; \
+	GOOS=$(os) GOARCH=$(arch) go build -tags netgo -installsuffix netgo -ldflags "$(RELEASE_LDFLAGS)" -o $$exe
 
 update-doc: all
 	go run _scripts/update-cmdref.go >CMDREF.md
 
-.PHONY: all precompile test release update-doc
+.PHONY: all clean precompile test release update-doc
