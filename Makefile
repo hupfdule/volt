@@ -42,8 +42,19 @@ $(DEFAULT_ARCHS):
 	if [ $(os) = windows ]; then \
 	  exe=$$exe.exe; \
 	fi; \
-	echo "Creating "$$exe; \
-	GOOS=$(os) GOARCH=$(arch) go build -tags netgo -installsuffix netgo -ldflags "$(RELEASE_LDFLAGS)" -o $$exe
+	subarchs="0"; \
+	if [ $(arch) = arm ]; then \
+	  subarchs="5 6 7"; \
+	fi; \
+	for subarch in $$subarchs; do \
+	  if [ $$subarch != 0 ]; then \
+		  exe=$(exe)-v$$subarch; \
+		else \
+		  subarch=""; \
+		fi; \
+		echo "Creating "$$exe; \
+		GOOS=$(os) GOARCH=$(arch) GOARM=$$subarch go build -tags netgo -installsuffix netgo -ldflags "$(RELEASE_LDFLAGS)" -o $$exe; \
+	done;
 
 update-doc: all
 	go run _scripts/update-cmdref.go >CMDREF.md
