@@ -16,25 +16,27 @@ exe = $(DIST_DIR)/$(NAME)-$(VERSION)-$(os)-$(arch)
 DIST_DIR := dist
 BIN_DIR := bin
 
-all: $(BIN_DIR)/$(NAME)
-
 $(BIN_DIR)/$(NAME): $(SRC)
 	go build -o $(BIN_DIR)/$(NAME)
 
-precompile:
-	go build -a -i -o $(BIN_DIR)/$(NAME)
-	rm $(BIN_DIR)/$(NAME)
+.PHONY: precompile
+precompile: | all clean
 
+.PHONY: all
+all: $(BIN_DIR)/$(NAME)
+
+.PHONY: clean
 clean:
-	rm -f $(BIN_DIR)/$(NAME)
-	rm -f -d $(BIN_DIR)
-	rm -f $(DIST_DIR)/*
-	rm -f -d $(DIST_DIR)
+	@rm -f $(BIN_DIR)/$(NAME)
+	@rm -f -d $(BIN_DIR)
+	@rm -f $(DIST_DIR)/*
+	@rm -f -d $(DIST_DIR)
 
-test:
-	make
+.PHONY: test
+test: all
 	go test -v -race -parallel 3 ./...
 
+.PHONY: release
 release: $(DEFAULT_ARCHS)
 
 $(DEFAULT_ARCHS):
@@ -56,7 +58,7 @@ $(DEFAULT_ARCHS):
 		GOOS=$(os) GOARCH=$(arch) GOARM=$$subarch go build -tags netgo -installsuffix netgo -ldflags "$(RELEASE_LDFLAGS)" -o $$exe; \
 	done;
 
+.PHONY: update-doc
 update-doc: all
 	go run _scripts/update-cmdref.go >CMDREF.md
 
-.PHONY: all clean precompile test release update-doc
