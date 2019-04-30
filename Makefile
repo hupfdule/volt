@@ -18,6 +18,12 @@ precompile:
 	go build -a -i -o $(BIN_DIR)/$(NAME)
 	rm $(BIN_DIR)/$(NAME)
 
+clean:
+	rm -f $(BIN_DIR)/$(NAME)
+	rm -f -d $(BIN_DIR)
+	rm -f $(DIST_DIR)/*
+	rm -f -d $(DIST_DIR)
+
 test:
 	make
 	go test -v -race -parallel 3 ./...
