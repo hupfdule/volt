@@ -20,6 +20,7 @@
 See [the command reference](https://github.com/vim-volt/volt/blob/master/CMDREF.md) for more details.
 
 
+* [Changes to upstream](#changes-to-upstream)
 * [What is Volt](#what-is-volt)
 * [Install](#install)
 * [Self upgrade](#self-upgrade)
@@ -37,6 +38,28 @@ See [the command reference](https://github.com/vim-volt/volt/blob/master/CMDREF.
   * [Switch set of plugins ("Profile" feature)](#switch-set-of-plugins-profile-feature)
   * [Manage a local directory as a vim plugin](#manage-a-local-directory-as-a-vim-plugin)
 * [Contribution](#tada-contribution)
+
+## Changes to upstream
+
+This is not the upstream source. It's a fork to fix some bugs that are not
+incorporated into upstream yet. If you are searching for the non-patched
+upstream see http://github.com/vim-volt/volt.
+
+The following Pull Requests are integrated in this fork:
+
+<!--
+ - There are currently no Pull Requests that are not incorporated into
+   upstream.
+-->
+
+<!--
+ - [Remove erroneous call to `RemoveAllReposPath`](https://github.com/vim-volt/volt/pull/281)
+ - [Support go modules](https://github.com/vim-volt/volt/pull/283)
+ - [Sort entries in lockJSLN](https://github.com/vim-volt/volt/pull/284)
+ - [Cleanup tmp dirs after test](https://github.com/vim-volt/volt/pull/285)
+-->
+ - [Allow conditional plugin loading](https://github.com/vim-volt/volt/pull/302)
+ - [Return actual error when updating repos](https://github.com/vim-volt/volt/pull/315)
 
 
 
