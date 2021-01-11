@@ -11,7 +11,7 @@ import (
 )
 
 // This variable is not constant for testing (to change it temporarily)
-var voltVersion = "v0.3.7.hupfdule1"
+var voltVersion = "v0.3.7.hupfdule2"
 
 func init() {
 	cmdMap["version"] = &versionCmd{}
